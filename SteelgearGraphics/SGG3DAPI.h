@@ -15,8 +15,7 @@ public:
 
 	virtual void Stop() = 0;
 
-	virtual void CopySceneData(SGGScene* scene);
-
+	virtual void CopySceneData(SGGScene* scene) = 0;
 
 };
 

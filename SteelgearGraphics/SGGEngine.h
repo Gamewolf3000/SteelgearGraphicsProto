@@ -4,7 +4,10 @@
 
 #include "EntityHandler.h"
 #include "D3D11BaseClass.h"
+
 #include "SGGScene.h"
+#include "SGG3DAPI.h"
+#include "SGGEngineIncludes.h"
 
 class SGGEngine
 {
@@ -16,7 +19,7 @@ private:
 		//private constructor
 	}
 
-	SGG3DAPI graphicsApi;
+	SGG3DAPI* graphicsApi;
 	//D3D11BaseClass* d3d;
 	//Controls* controller;
 	//Audio* audio;
@@ -38,18 +41,16 @@ private:
 
 public:
 	static SGGEngine* getInstance();
-	void Setup(HINSTANCE hInstance);
+	void Setup(HINSTANCE hInstance, SGGSettings settings);
 	~SGGEngine();
 
-	HWND GetWindow();
-	TimerClass* GetTimer();
-
+	//TimerClass* GetTimer();
 	//Audio* Sound();
-	Scene* CreateScene();
+	SGGScene* CreateScene();
 
-	void RenderScene(Scene* scene);
+	void RenderScene(SGGScene* scene);
 
-	void DisplayFPS();
+	//void DisplayFPS();
 
 	wchar_t* GetDirectory();
 };

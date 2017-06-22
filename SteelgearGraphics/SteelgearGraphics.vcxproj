@@ -146,14 +146,55 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Camera.h" />
+    <ClInclude Include="CameraHandler.h" />
+    <ClInclude Include="D3D11BaseClass.h" />
+    <ClInclude Include="D3D11BufferClass.h" />
+    <ClInclude Include="D3D11CameraClass.h" />
+    <ClInclude Include="D3D11Includes.h" />
+    <ClInclude Include="D3D11MaterialClass.h" />
+    <ClInclude Include="D3D11ShaderClass.h" />
+    <ClInclude Include="D3DMain.h" />
+    <ClInclude Include="EngineIncludes.h" />
+    <ClInclude Include="EntityHandler.h" />
+    <ClInclude Include="LightHandler.h" />
+    <ClInclude Include="MaterialHandler.h" />
+    <ClInclude Include="MeshHandler.h" />
+    <ClInclude Include="ModelImporter.h" />
+    <ClInclude Include="OBJLoader.h" />
     <ClInclude Include="SGG3DAPI.h" />
     <ClInclude Include="SGGEngine.h" />
+    <ClInclude Include="SGGEngineIncludes.h" />
+    <ClInclude Include="SGGEntity.h" />
+    <ClInclude Include="SGGMath.h" />
     <ClInclude Include="SGGScene.h" />
+    <ClInclude Include="ShaderHandler.h" />
+    <ClInclude Include="TimerClass.h" />
+    <ClInclude Include="TransformHandler.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="CameraHandler.cpp" />
+    <ClCompile Include="D3D11BaseClass.cpp" />
+    <ClCompile Include="D3D11BufferClass.cpp" />
+    <ClCompile Include="D3D11CameraClass.cpp" />
+    <ClCompile Include="D3D11MaterialClass.cpp" />
+    <ClCompile Include="D3D11ShaderClass.cpp" />
+    <ClCompile Include="D3DMain.cpp" />
+    <ClCompile Include="EngineIncludes.cpp" />
+    <ClCompile Include="EntityHandler.cpp" />
+    <ClCompile Include="LightHandler.cpp" />
+    <ClCompile Include="MaterialHandler.cpp" />
+    <ClCompile Include="MeshHandler.cpp" />
+    <ClCompile Include="ModelImporter.cpp" />
+    <ClCompile Include="OBJLoader.cpp" />
     <ClCompile Include="SGG3DAPI.cpp" />
     <ClCompile Include="SGGEngine.cpp" />
+    <ClCompile Include="SGGEntity.cpp" />
     <ClCompile Include="SGGScene.cpp" />
+    <ClCompile Include="ShaderHandler.cpp" />
+    <ClCompile Include="TimerClass.cpp" />
+    <ClCompile Include="TransformHandler.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

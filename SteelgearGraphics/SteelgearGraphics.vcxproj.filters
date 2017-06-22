@@ -13,26 +13,230 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Graphics">
+      <UniqueIdentifier>{951ea813-96fa-44fc-9218-7afda70bf6f4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics\D3D11">
+      <UniqueIdentifier>{5a00344a-8be4-4137-8286-1706c39faa66}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics\D3D11\Headers">
+      <UniqueIdentifier>{c266d138-8dc3-48ed-b8b3-3dded22e6dfe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics\D3D11\Sources">
+      <UniqueIdentifier>{f9119843-8e7a-4cb7-accf-4c4fbd9ef5b7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Utility">
+      <UniqueIdentifier>{4d654d7b-50ef-4176-9cc8-2e9af35ac45d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Entity System">
+      <UniqueIdentifier>{73e98908-f2a8-46dc-98c4-17b1464b83d5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Entity System\Light">
+      <UniqueIdentifier>{7a9f4daf-9df3-4a72-9e06-ea82ab3cc9d7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Entity System\Light\Headers">
+      <UniqueIdentifier>{c41a42d1-495b-4cbd-8d37-7c14a5cead75}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Entity System\Light\Sources">
+      <UniqueIdentifier>{87f17864-005d-41a4-a9fb-1454f16d157f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Entity System\Mesh">
+      <UniqueIdentifier>{87c9e044-3064-4a63-a7f3-224b102bbe4f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Entity System\Transform">
+      <UniqueIdentifier>{e36bd084-2ed1-4e3e-8107-5a12ebf10796}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Entity System\Camera">
+      <UniqueIdentifier>{dd51e041-c63f-4c94-824b-12dc4eb5cff3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Entity System\Material">
+      <UniqueIdentifier>{c839b5e1-be69-477d-beb4-fcbd096801a6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Entity System\Pipeline">
+      <UniqueIdentifier>{752b3ea4-8ebb-4e35-b974-4c2383ea4e6b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Entity System\Other">
+      <UniqueIdentifier>{f771448a-0a40-4916-8e54-2c1e69a5f9f4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Entity System\Other\Headers">
+      <UniqueIdentifier>{d1148a1f-a45a-461e-aa7f-afe423f796a2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Entity System\Mesh\Headers">
+      <UniqueIdentifier>{66910606-8d32-4777-8da5-412f7ef0c531}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Entity System\Material\Headers">
+      <UniqueIdentifier>{9cd84ec4-2520-48a2-a9b2-7d0157bbb056}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Entity System\Camera\Headers">
+      <UniqueIdentifier>{55d48bdb-68c3-4bf8-bfaf-87f66895ee57}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Entity System\Pipeline\Headers">
+      <UniqueIdentifier>{6762e7a1-0717-4eb6-8cf2-430f46fa6954}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Entity System\Transform\Headers">
+      <UniqueIdentifier>{c86d880f-e54d-4693-b90f-ca7adc212aab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Entity System\Camera\Sources">
+      <UniqueIdentifier>{fb61b977-6b78-4f80-82e5-c511a04d1faa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Entity System\Material\Sources">
+      <UniqueIdentifier>{85659fed-34f6-4440-bb53-b3e818ec088e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Entity System\Mesh\Sources">
+      <UniqueIdentifier>{29eb9c61-15a7-4113-acb3-03f22ee2693c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Entity System\Other\Sources">
+      <UniqueIdentifier>{01c7c698-587f-482b-bf25-8a9c420a74d6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Entity System\Pipeline\Sources">
+      <UniqueIdentifier>{25ceaa2e-c0f3-41bf-8269-601b1763ba02}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Entity System\Transform\Sources">
+      <UniqueIdentifier>{9b886371-2162-4ca6-a9c2-f773ccbc757c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SGGEngine.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="SGG3DAPI.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="SGGScene.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SGG3DAPI.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="D3D11BaseClass.h">
+      <Filter>Graphics\D3D11\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="D3D11BufferClass.h">
+      <Filter>Graphics\D3D11\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="D3D11CameraClass.h">
+      <Filter>Graphics\D3D11\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="D3D11Includes.h">
+      <Filter>Graphics\D3D11\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="D3D11MaterialClass.h">
+      <Filter>Graphics\D3D11\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="D3D11ShaderClass.h">
+      <Filter>Graphics\D3D11\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="D3DMain.h">
+      <Filter>Graphics\D3D11\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="TimerClass.h">
+      <Filter>Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineIncludes.h">
+      <Filter>Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="EntityHandler.h">
+      <Filter>Entity System\Other\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="LightHandler.h">
+      <Filter>Entity System\Light\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="MaterialHandler.h">
+      <Filter>Entity System\Material\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="MeshHandler.h">
+      <Filter>Entity System\Mesh\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="ModelImporter.h">
+      <Filter>Entity System\Mesh\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="OBJLoader.h">
+      <Filter>Entity System\Mesh\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="ShaderHandler.h">
+      <Filter>Entity System\Pipeline\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="TransformHandler.h">
+      <Filter>Entity System\Transform\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CameraHandler.h">
+      <Filter>Entity System\Camera\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>Entity System\Camera\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="SGGEngineIncludes.h">
+      <Filter>Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="SGGEntity.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SGGMath.h">
+      <Filter>Utility</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SGGEngine.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SGG3DAPI.cpp">
+    <ClCompile Include="SGGScene.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SGGScene.cpp">
+    <ClCompile Include="SGG3DAPI.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="D3DMain.cpp">
+      <Filter>Graphics\D3D11\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="D3D11BaseClass.cpp">
+      <Filter>Graphics\D3D11\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="D3D11BufferClass.cpp">
+      <Filter>Graphics\D3D11\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="D3D11CameraClass.cpp">
+      <Filter>Graphics\D3D11\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="D3D11MaterialClass.cpp">
+      <Filter>Graphics\D3D11\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="D3D11ShaderClass.cpp">
+      <Filter>Graphics\D3D11\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="TimerClass.cpp">
+      <Filter>Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="EngineIncludes.cpp">
+      <Filter>Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="CameraHandler.cpp">
+      <Filter>Entity System\Camera\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera.cpp">
+      <Filter>Entity System\Camera\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="EntityHandler.cpp">
+      <Filter>Entity System\Other\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="LightHandler.cpp">
+      <Filter>Entity System\Light\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="MeshHandler.cpp">
+      <Filter>Entity System\Mesh\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="ModelImporter.cpp">
+      <Filter>Entity System\Mesh\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="OBJLoader.cpp">
+      <Filter>Entity System\Mesh\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="ShaderHandler.cpp">
+      <Filter>Entity System\Pipeline\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="TransformHandler.cpp">
+      <Filter>Entity System\Transform\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="MaterialHandler.cpp">
+      <Filter>Entity System\Material\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="SGGEntity.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
