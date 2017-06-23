@@ -3,8 +3,10 @@
 #pragma once
 
 #include <fstream>
+#include <string>
 
-#include "EngineIncludes.h"
+#include "SGGEngineIncludes.h"
+#include "SGGMath.h"
 
 class OBJLoader
 {

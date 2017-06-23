@@ -1,5 +1,6 @@
 #include "MaterialHandler.h"
-#include "EntityHandler.h"
+#include "SGGEntityHandler.h"
+#include "SGGEntity.h"
 
 std::vector<MaterialData>& MaterialHandler::GetMaterialJobs()
 {
@@ -82,7 +83,7 @@ MaterialHandler::~MaterialHandler()
 {
 }
 
-void MaterialHandler::BindMaterial(Entity & entity, std::string fileName, MaterialType type, unsigned int nrOfFrames)
+void MaterialHandler::BindMaterial(SGGEntity & entity, std::string fileName, MaterialType type, unsigned int nrOfFrames)
 {
 	if (nrOfFrames > 1)
 	{
@@ -272,7 +273,7 @@ void MaterialHandler::BindMaterial(Entity & entity, std::string fileName, Materi
 	}
 }
 
-void MaterialHandler::RemoveMaterials(Entity & entity, MaterialType type)
+void MaterialHandler::RemoveMaterials(SGGEntity & entity, MaterialType type)
 {
 	int startFramePos = -1;
 	if (type == diffuse)
@@ -392,7 +393,7 @@ void MaterialHandler::RemoveMaterials(Entity & entity, MaterialType type)
 	}
 }
 
-void MaterialHandler::Animate(Entity & entity, MaterialType type)
+void MaterialHandler::Animate(SGGEntity & entity, MaterialType type)
 {
 	if (type == diffuse)
 	{
@@ -451,7 +452,7 @@ void MaterialHandler::Animate(Entity & entity, MaterialType type)
 	}
 }
 
-void MaterialHandler::AnimateReverse(Entity & entity, MaterialType type)
+void MaterialHandler::AnimateReverse(SGGEntity & entity, MaterialType type)
 {
 	if (type == diffuse)
 	{
@@ -510,7 +511,7 @@ void MaterialHandler::AnimateReverse(Entity & entity, MaterialType type)
 	}
 }
 
-int MaterialHandler::GetAnimationFrame(Entity & entity, MaterialType type)
+int MaterialHandler::GetAnimationFrame(SGGEntity & entity, MaterialType type)
 {
 	int returnValue = -1;
 

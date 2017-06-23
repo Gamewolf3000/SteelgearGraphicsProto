@@ -45,8 +45,8 @@ class SGGEntity
 {
 private:
 
-	friend class EntityHandler;
-	friend class JochEngine;
+	friend class SGGEntityHandler;
+	friend class SGGEngine;
 	friend class TransformHandler;
 	friend class MeshHandler;
 	friend class ShaderHandler;
@@ -57,9 +57,7 @@ private:
 	std::string identifier; // to be able to find a specific entity for for example copying, or binding as child/parent
 	int idNumber; // Number given by Entity handler
 
-	Entity* parent = nullptr; // To be able to tell parent that child is removed
-	std::vector<Entity*> children; // Update children with position and direction when parent changes
-
+	TransformData transform;
 
 	//Ids for knowing which components the entity use
 

@@ -1,5 +1,6 @@
 #include "ShaderHandler.h"
-#include "EntityHandler.h"
+#include "SGGEntityHandler.h"
+#include "SGGEntity.h"
 
 void ShaderHandler::ClearShaderJobs()
 {
@@ -8,10 +9,10 @@ void ShaderHandler::ClearShaderJobs()
 
 ShaderHandler::ShaderHandler(wchar_t directory[200])
 {
-	Entity dummyEnt;
+	SGGEntity dummyEnt;
 	BindShaders(dummyEnt, "EnvironmentMapShader", true, false, false, false, true); // Bind the shaders for env map with cube maps
 
-	Entity dummyEnt2;
+	SGGEntity dummyEnt2;
 	BindShaders(dummyEnt2, "IrradianceMapShader", true, false, false, false, true); // Bind the shaders for env map with cube maps
 }
 
@@ -19,7 +20,7 @@ ShaderHandler::~ShaderHandler()
 {
 }
 
-void ShaderHandler::BindShaders(Entity & entity, std::string shaderName, bool vS, bool hS, bool dS, bool gS, bool pS)
+void ShaderHandler::BindShaders(SGGEntity & entity, std::string shaderName, bool vS, bool hS, bool dS, bool gS, bool pS)
 {
 	for (unsigned int i = 0; i < shaders.size(); i++)
 	{
@@ -65,7 +66,7 @@ void ShaderHandler::BindShaders(Entity & entity, std::string shaderName, bool vS
 
 }
 
-void ShaderHandler::RemoveShaders(Entity & entity)
+void ShaderHandler::RemoveShaders(SGGEntity & entity)
 {
 	shaders[entity.shaderID].nrOfUsers--;
 

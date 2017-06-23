@@ -2,13 +2,15 @@
 #define MATERIAL_HANDLER_H
 #pragma once
 
-#include "EngineIncludes.h"
+#include <vector>
 
-struct Entity;
+#include "SGGEngineIncludes.h"
+
+class SGGEntity;
 
 class MaterialHandler
 {
-	friend class EntityHandler;
+	friend class SGGEntityHandler;
 
 private:
 	std::vector<MaterialData> materials;
@@ -23,12 +25,12 @@ public:
 	MaterialHandler();
 	virtual ~MaterialHandler();
 
-	void BindMaterial(Entity& entity, std::string fileName, MaterialType type, unsigned int nrOfFrames = 1);
-	void RemoveMaterials(Entity& entity, MaterialType type);
+	void BindMaterial(SGGEntity& entity, std::string fileName, MaterialType type, unsigned int nrOfFrames = 1);
+	void RemoveMaterials(SGGEntity& entity, MaterialType type);
 
-	void Animate(Entity& entity, MaterialType type);
-	void AnimateReverse(Entity& entity, MaterialType type);
-	int GetAnimationFrame(Entity& entity, MaterialType type);
+	void Animate(SGGEntity& entity, MaterialType type);
+	void AnimateReverse(SGGEntity& entity, MaterialType type);
+	int GetAnimationFrame(SGGEntity& entity, MaterialType type);
 };
 
 #endif

@@ -1,5 +1,6 @@
 #include "CameraHandler.h"
-#include "EntityHandler.h"
+#include "SGGEntityHandler.h"
+#include "SGGEntity.h"
 #include "TransformHandler.h"
 
 CameraData CameraHandler::UpdateActiveCamera()
@@ -27,7 +28,7 @@ CameraHandler::~CameraHandler()
 
 }
 
-void CameraHandler::BindCamera(Entity & entity, float fov, float aspectRatio, float nearPlane, float farPlane, bool setActive)
+void CameraHandler::BindCamera(SGGEntity & entity, float fov, float aspectRatio, float nearPlane, float farPlane, bool setActive)
 {
 	int vectorSpot = -1;
 
@@ -58,19 +59,19 @@ void CameraHandler::BindCamera(Entity & entity, float fov, float aspectRatio, fl
 	MatrixToFloat4x4(cameras[vectorSpot].projectionM, MatrixProjectionLH(fov, aspectRatio, nearPlane, farPlane));
 }
 
-void CameraHandler::RemoveCamera(Entity & entity)
+void CameraHandler::RemoveCamera(SGGEntity & SGGEntity)
 {
-	if (entity.cameraID == activeCamera)
+	if (SGGEntity.cameraID == activeCamera)
 	{
-		ErrorCheck(5000, L"Active camera removed");
+		//ErrorCheck(5000, L"Active camera removed");
 		activeCamera = -1; // This forces an immediate crash, instead of creating a null camera
 	}
 
-	freeSpots.push_back(entity.cameraID);
-	entity.cameraID = -1;
+	freeSpots.push_back(SGGEntity.cameraID);
+	SGGEntity.cameraID = -1;
 }
 
-void CameraHandler::SetActiveCamera(Entity & entity)
+void CameraHandler::SetActiveCamera(SGGEntity & SGGEntity)
 {
-	activeCamera = entity.cameraID;
+	activeCamera = SGGEntity.cameraID;
 }

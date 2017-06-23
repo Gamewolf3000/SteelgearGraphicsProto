@@ -4,6 +4,7 @@
 
 
 #include <DirectXMath.h>
+using namespace DirectX;
 
 #define Vec DirectX::XMVECTOR
 #define Matrix DirectX::XMMATRIX

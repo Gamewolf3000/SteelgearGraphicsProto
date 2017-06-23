@@ -2,9 +2,12 @@
 #define SHADER_HANDLER_H
 #pragma once
 
-#include "EngineIncludes.h"
+#include <vector>
+#include <string>
 
-struct Entity;
+#include "SGGEngineIncludes.h"
+
+class SGGEntity;
 
 struct ShaderData
 {
@@ -20,7 +23,7 @@ struct ShaderData
 
 class ShaderHandler
 {
-	friend class EntityHandler;
+	friend class SGGEntityHandler;
 
 private:
 	std::vector<ShaderData> shaders;
@@ -36,8 +39,8 @@ public:
 	ShaderHandler(wchar_t directory[200]);
 	virtual ~ShaderHandler();
 
-	void BindShaders(Entity& entity, std::string shaderName, bool vS, bool hS, bool dS, bool gS, bool pS);
-	void RemoveShaders(Entity& entity);
+	void BindShaders(SGGEntity& entity, std::string shaderName, bool vS, bool hS, bool dS, bool gS, bool pS);
+	void RemoveShaders(SGGEntity& entity);
 
 };
 

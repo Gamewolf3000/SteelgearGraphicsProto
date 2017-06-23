@@ -311,7 +311,7 @@ MeshData OBJLoader::LoadOBJFile(std::string fileName)
 		tangent.z = f * (deltaV2 * edge1.z - deltaV1 * edge2.z);
 
 		float length = sqrt((tangent.x * tangent.x) + (tangent.y * tangent.y) + (tangent.z * tangent.z));
-		XMFLOAT3 temp;
+		Float3D temp;
 
 		temp.x = tangent.x / length;
 		temp.y = tangent.y / length;

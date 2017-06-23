@@ -1,5 +1,6 @@
 #include "LightHandler.h"
-#include "EntityHandler.h"
+#include "SGGEntityHandler.h"
+#include "SGGEntity.h"
 
 LightHandler::LightHandler()
 {
@@ -11,7 +12,7 @@ LightHandler::~LightHandler()
 
 }
 
-void LightHandler::BindPointLight(Entity & entity, Vec offsetFromEntity, Vec colour, float range)
+void LightHandler::BindPointLight(SGGEntity & entity, Vec offsetFromEntity, Vec colour, float range)
 {
 	int vectorSpot = -1;
 
@@ -38,7 +39,7 @@ void LightHandler::BindPointLight(Entity & entity, Vec offsetFromEntity, Vec col
 
 }
 
-void LightHandler::RemoveLight(Entity & entity)
+void LightHandler::RemoveLight(SGGEntity & entity)
 {
 	LightData temp;
 	lights[entity.lightID] = temp;
@@ -46,7 +47,7 @@ void LightHandler::RemoveLight(Entity & entity)
 	entity.lightID = -1;
 }
 
-bool LightHandler::IsActive(Entity & entity)
+bool LightHandler::IsActive(SGGEntity & SGGEntity)
 {
-	return lights[entity.lightID].active;
+	return lights[SGGEntity.lightID].active;
 }

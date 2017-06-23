@@ -2,6 +2,8 @@
 
 #include <string>
 
+#include "SGGEntityHandler.h"
+
 class SGGScene
 {
 private:
@@ -9,17 +11,10 @@ private:
 	SGGEntityHandler* entHandler;
 
 public:
-	SGGScene();
+	SGGScene(MeshHandler* mesh, ShaderHandler* pipeline, LightHandler* light, CameraHandler* camera, MaterialHandler* material, TransformHandler* transform);
 	~SGGScene();
 
 	SGGEntityHandler* Entity();
-
-	MeshHandler* Mesh();
-	PipelineHandler* Pipeline();
-	LightHandler* Light();
-	CameraHandler* Camera();
-	MaterialHandler* Material();
-	TransformHandler* Transform();
 
 };
 

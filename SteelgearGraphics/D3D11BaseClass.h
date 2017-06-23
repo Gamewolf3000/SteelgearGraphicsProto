@@ -7,9 +7,9 @@
 #include "D3D11BufferClass.h"
 #include "D3D11MaterialClass.h"
 
-#include "EngineIncludes.h"
+#include "SGGEngineIncludes.h"
 
-struct Entity;
+struct SGGEntity;
 struct EntityMaterials;
 struct CameraData;
 

@@ -1,13 +1,29 @@
 #pragma once
 
+#ifdef _WIN32
+
+#include <Windows.h>
+
+#endif // _WIN32
+
+
+
 #include "TimerClass.h"
+//#include "D3D11BaseClass.h"
 
 #include "EntityHandler.h"
-#include "D3D11BaseClass.h"
+#include "CameraHandler.h"
+#include "LightHandler.h"
+#include "MaterialHandler.h"
+#include "MeshHandler.h"
+#include "ShaderHandler.h"
+#include "TransformHandler.h"
 
 #include "SGGScene.h"
 #include "SGG3DAPI.h"
 #include "SGGEngineIncludes.h"
+
+
 
 class SGGEngine
 {
@@ -24,6 +40,13 @@ private:
 	//Controls* controller;
 	//Audio* audio;
 	//TimerClass* timer;
+
+	MeshHandler* meshHandler;
+	ShaderHandler* pipelineHandler;
+	LightHandler* lightHandler;
+	CameraHandler* cameraHandler;
+	MaterialHandler* materialHandler;
+	TransformHandler* transformHandler;
 
 	wchar_t directory[200];
 

@@ -1,5 +1,6 @@
 #include "MeshHandler.h"
-#include "EntityHandler.h"
+#include "SGGEntityHandler.h"
+#include "SGGEntity.h"
 
 MeshHandler::MeshHandler()
 {
@@ -35,7 +36,7 @@ MeshData MeshHandler::LoadOBJ(std::string fileName)
 	return temp;
 }
 
-void MeshHandler::BindMesh(Entity& entity, std::string name)
+void MeshHandler::BindMesh(SGGEntity& entity, std::string name)
 {
 
 	for (unsigned int i = 0; i < entityMeshes.size(); i++)
@@ -67,7 +68,7 @@ void MeshHandler::BindMesh(Entity& entity, std::string name)
 	meshJobs.push_back(entityMeshes[entity.meshID]);
 }
 
-void MeshHandler::BindMesh(Entity & entity, MeshData mesh)
+void MeshHandler::BindMesh(SGGEntity & entity, MeshData mesh)
 {
 
 	if (freeSpots.size() > 0)
@@ -88,7 +89,7 @@ void MeshHandler::BindMesh(Entity & entity, MeshData mesh)
 	meshJobs.push_back(entityMeshes[entity.meshID]);
 }
 
-void MeshHandler::RemoveMesh(Entity & entity)
+void MeshHandler::RemoveMesh(SGGEntity & entity)
 {
 	entityMeshes[entity.meshID].nrOfUsers--;
 
@@ -117,17 +118,17 @@ std::vector<MeshData>& MeshHandler::GetMeshJobs()
 	return meshJobs;
 }
 
-unsigned int MeshHandler::GetNrOfIndicesOfMesh(Entity & entity)
+unsigned int MeshHandler::GetNrOfIndicesOfMesh(SGGEntity & entity)
 {
 	return entityMeshes[entity.meshID].nrOfIndices;
 }
 
-bool MeshHandler::GetRender(Entity & entity)
+bool MeshHandler::GetRender(SGGEntity & entity)
 {
 	return entityMeshes[entity.meshID].render;
 }
 
-void MeshHandler::SetRender(Entity & entity, bool value)
+void MeshHandler::SetRender(SGGEntity & entity, bool value)
 {
 	entityMeshes[entity.meshID].render = value;
 }

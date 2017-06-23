@@ -1,9 +1,11 @@
 #ifndef CAMERA_HANDLER_CLASS_H
 #define CAMERA_HANDLER_CLASS_H
 
-#include "EngineIncludes.h"
+#include <vector>
 
-struct Entity;
+#include "SGGEngineIncludes.h"
+
+class SGGEntity;
 class TransformHandler;
 
 struct CameraData
@@ -20,7 +22,7 @@ struct CameraData
 
 class CameraHandler
 {
-	friend class EntityHandler;
+	friend class SGGEntityHandler;
 
 private:
 	std::vector<CameraData> cameras;
@@ -36,9 +38,9 @@ public:
 	CameraHandler(TransformHandler* handler);
 	virtual ~CameraHandler();
 
-	void BindCamera(Entity& entity, float fov, float aspectRatio, float nearPlane, float farPlane, bool setActive);
-	void RemoveCamera(Entity& entity);
-	void SetActiveCamera(Entity& entity);
+	void BindCamera(SGGEntity& entity, float fov, float aspectRatio, float nearPlane, float farPlane, bool setActive);
+	void RemoveCamera(SGGEntity& entity);
+	void SetActiveCamera(SGGEntity& entity);
 
 };
 

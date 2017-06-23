@@ -2,11 +2,12 @@
 #define MODEL_IMPORTER_H
 
 
-#include "ClassIncludes.h"
+//#include "ClassIncludes.h"
 #include <iostream>
 #include <fstream>
 #include <string>
 
+#include "SGGMath.h"
 
 #include "DirectXHelpers.h"
 #include "pch.h"
@@ -29,9 +30,9 @@ private:
 	void setCounters(string filename);
 	void setBuffers(ID3D11Device* gDevice);
 
-	XMFLOAT3* vertices;
-	XMFLOAT2* uvCoords;
-	XMFLOAT3* normals;
+	Float3D* vertices;
+	Float2D* uvCoords;
+	Float3D* normals;
 	UINT* indices;
 	ObjVertexData* modelData;
 

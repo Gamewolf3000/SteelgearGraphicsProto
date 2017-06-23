@@ -94,6 +94,9 @@
     <Filter Include="Entity System\Transform\Sources">
       <UniqueIdentifier>{9b886371-2162-4ca6-a9c2-f773ccbc757c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="DirectXTK">
+      <UniqueIdentifier>{af6a9671-9f1f-4fcf-8e30-53b1caaf79c9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SGGEngine.h">
@@ -159,9 +162,6 @@
     <ClInclude Include="CameraHandler.h">
       <Filter>Entity System\Camera\Headers</Filter>
     </ClInclude>
-    <ClInclude Include="Camera.h">
-      <Filter>Entity System\Camera\Headers</Filter>
-    </ClInclude>
     <ClInclude Include="SGGEngineIncludes.h">
       <Filter>Utility</Filter>
     </ClInclude>
@@ -170,6 +170,27 @@
     </ClInclude>
     <ClInclude Include="SGGMath.h">
       <Filter>Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="SGGEntityHandler.h">
+      <Filter>Entity System\Other\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="SGGEntityJobs.h">
+      <Filter>Entity System\Other\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="PlatformHelpers.h">
+      <Filter>DirectXTK</Filter>
+    </ClInclude>
+    <ClInclude Include="WICTextureLoader.h">
+      <Filter>DirectXTK</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectXHelpers.h">
+      <Filter>DirectXTK</Filter>
+    </ClInclude>
+    <ClInclude Include="pch.h">
+      <Filter>DirectXTK</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -209,9 +230,6 @@
     <ClCompile Include="CameraHandler.cpp">
       <Filter>Entity System\Camera\Sources</Filter>
     </ClCompile>
-    <ClCompile Include="Camera.cpp">
-      <Filter>Entity System\Camera\Sources</Filter>
-    </ClCompile>
     <ClCompile Include="EntityHandler.cpp">
       <Filter>Entity System\Other\Sources</Filter>
     </ClCompile>
@@ -237,6 +255,18 @@
       <Filter>Entity System\Material\Sources</Filter>
     </ClCompile>
     <ClCompile Include="SGGEntity.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SGGEntityHandler.cpp">
+      <Filter>Entity System\Other\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="WICTextureLoader.cpp">
+      <Filter>DirectXTK</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

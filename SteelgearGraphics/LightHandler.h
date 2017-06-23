@@ -1,14 +1,16 @@
 #ifndef LIGHT_HANDLER_CLASS_H
 #define LIGHT_HANDLER_CLASS_H
 
-#include "EngineIncludes.h"
+#include <vector>
 
-struct Entity;
+#include "SGGEngineIncludes.h"
+
+class SGGEntity;
 class TransformHandler;
 
 class LightHandler
 {
-	friend class EntityHandler;
+	friend class SGGEntityHandler;
 
 private:
 	std::vector<LightData> lights;
@@ -20,10 +22,10 @@ public:
 	LightHandler();
 	virtual ~LightHandler();
 
-	void BindPointLight(Entity& entity, Vec offsetFromEntity, Vec colour, float range);
-	void RemoveLight(Entity& entity);
+	void BindPointLight(SGGEntity& entity, Vec offsetFromEntity, Vec colour, float range);
+	void RemoveLight(SGGEntity& entity);
 
-	bool IsActive(Entity& entity);
+	bool IsActive(SGGEntity& entity);
 
 };
 

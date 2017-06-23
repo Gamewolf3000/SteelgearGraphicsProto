@@ -1,5 +1,6 @@
 #include "TransformHandler.h"
-#include "EntityHandler.h"
+#include "SGGEntityHandler.h"
+#include "SGGEntity.h"
 
 TransformHandler::TransformHandler()
 {
@@ -9,205 +10,164 @@ TransformHandler::~TransformHandler()
 {
 }
 
-void TransformHandler::BindChild(Entity & parent, Entity & child)
+void TransformHandler::BindChild(SGGEntity & parent, SGGEntity & child)
 {
-	transforms[child.transformID].parent = parent.transformID;
+	child.transform.parent = &parent.transform;
 }
 
-void TransformHandler::RemoveParent(Entity & entity)
+void TransformHandler::RemoveParent(SGGEntity & entity)
 {
-	transforms[entity.transformID].parent = -1;
+	entity.transform.parent = nullptr;
 }
 
-int TransformHandler::CreateTransform()
-{
-	int returnID = -1;
-
-	if (freeSpots.size() > 0)
-	{
-		TransformData temp;
-
-		returnID = freeSpots[freeSpots.size() - 1];
-		transforms[returnID] = temp;
-
-		freeSpots.pop_back();
-		freeSpots.shrink_to_fit();
-	}
-	else
-	{
-		TransformData temp;
-
-		transforms.push_back(temp);
-
-		returnID = transforms.size() - 1;
-	}
-
-	return returnID;
-}
-
-void TransformHandler::RemoveTransform(unsigned int transformID)
-{
-	transforms[transformID].position = VecCreate(0.0f, 0.0f, 0.0f, 1.0f);
-	transforms[transformID].scale = VecCreate(1.0f, 1.0f, 1.0f, 1.0f);
-	transforms[transformID].rotation = MatrixIdentity;
-
-	transforms[transformID].direction = VecCreate(0.0f, 0.0f, -1.0f, 0.0f);
-	transforms[transformID].right = VecCreate(-1.0f, 0.0f, 0.0f, 0.0f);
-	transforms[transformID].up = VecCreate(0.0f, 1.0f, 0.0f, 0.0f);
-
-	transforms[transformID].parent = -1;
-
-	freeSpots.push_back(transformID);
-}
-
-Float4x4 TransformHandler::GetEntityTransform(Entity & entity)
+Float4x4 TransformHandler::GetEntityTransform(SGGEntity & entity)
 {
 	Matrix calcMatrix;
 	Float4x4 returnMatrix;
 
-	if (transforms[entity.transformID].parent == -1)
+	if (entity.transform.parent == nullptr)
 	{
-		calcMatrix = MatrixScalingFromVector(transforms[entity.transformID].scale) * transforms[entity.transformID].rotation * MatrixTranslationFromVec(transforms[entity.transformID].position);
+		calcMatrix = MatrixScalingFromVector(entity.transform.scale) * entity.transform.rotation * MatrixTranslationFromVec(entity.transform.position);
 		MatrixToFloat4x4(returnMatrix, calcMatrix);
 	}
 	else
 	{
-		unsigned int parentID = transforms[entity.transformID].parent;
-		calcMatrix = MatrixScalingFromVector(transforms[entity.transformID].scale) * transforms[entity.transformID].rotation * MatrixTranslationFromVec(transforms[entity.transformID].position) * MatrixScalingFromVector(transforms[parentID].scale) * transforms[parentID].rotation * MatrixTranslationFromVec(transforms[parentID].position);
+		TransformData parent = *entity.transform.parent;
+		calcMatrix = MatrixScalingFromVector(entity.transform.scale) * entity.transform.rotation * MatrixTranslationFromVec(entity.transform.position) * MatrixScalingFromVector(parent.scale) * parent.rotation * MatrixTranslationFromVec(parent.position);
 		MatrixToFloat4x4(returnMatrix, calcMatrix);
 	}
 
 	return returnMatrix;
 }
 
-void TransformHandler::SetPosition(Entity & entity, Vec position)
+void TransformHandler::SetPosition(SGGEntity & entity, Vec position)
 {
-	transforms[entity.transformID].position = position;
+	entity.transform.position = position;
 }
 
-Vec TransformHandler::GetPosition(Entity & entity)
+Vec TransformHandler::GetPosition(SGGEntity & entity)
 {
-	return transforms[entity.transformID].position;
+	return entity.transform.position;
 }
 
-void TransformHandler::MoveForward(Entity& entity, float value)
+void TransformHandler::MoveForward(SGGEntity& entity, float value)
 {
-	transforms[entity.transformID].position += transforms[entity.transformID].direction * value;
+	entity.transform.position += entity.transform.direction * value;
 }
 
-void TransformHandler::MoveBackward(Entity & entity, float value)
+void TransformHandler::MoveBackward(SGGEntity & entity, float value)
 {
-	transforms[entity.transformID].position -= transforms[entity.transformID].direction * value;
+	entity.transform.position -= entity.transform.direction * value;
 }
 
-void TransformHandler::MoveLeft(Entity & entity, float value)
+void TransformHandler::MoveLeft(SGGEntity & entity, float value)
 {
-	transforms[entity.transformID].position -= transforms[entity.transformID].right * value;
+	entity.transform.position -= entity.transform.right * value;
 }
 
-void TransformHandler::MoveRight(Entity & entity, float value)
+void TransformHandler::MoveRight(SGGEntity & entity, float value)
 {
-	transforms[entity.transformID].position += transforms[entity.transformID].right * value;
+	entity.transform.position += entity.transform.right * value;
 }
 
-void TransformHandler::MoveUp(Entity & entity, float value)
+void TransformHandler::MoveUp(SGGEntity & entity, float value)
 {
-	transforms[entity.transformID].position += transforms[entity.transformID].up * value;
+	entity.transform.position += entity.transform.up * value;
 }
 
-void TransformHandler::MoveDown(Entity & entity, float value)
+void TransformHandler::MoveDown(SGGEntity & entity, float value)
 {
-	transforms[entity.transformID].position -= transforms[entity.transformID].up * value;
+	entity.transform.position -= entity.transform.up * value;
 }
 
-void TransformHandler::MoveAlongVector(Entity & entity, Vec vector)
+void TransformHandler::MoveAlongVector(SGGEntity & entity, Vec vector)
 {
-	transforms[entity.transformID].position += vector;
+	entity.transform.position += vector;
 }
 
-Vec TransformHandler::GetForward(Entity& entity)
+Vec TransformHandler::GetForward(SGGEntity& entity)
 {
-	return transforms[entity.transformID].direction;
+	return entity.transform.direction;
 }
 
-Vec TransformHandler::GetUp(Entity & entity)
+Vec TransformHandler::GetUp(SGGEntity & entity)
 {
-	return transforms[entity.transformID].up;
+	return entity.transform.up;
 }
 
-Vec TransformHandler::GetRight(Entity & entity)
+Vec TransformHandler::GetRight(SGGEntity & entity)
 {
-	return transforms[entity.transformID].right;
+	return entity.transform.right;
 }
 
-void TransformHandler::Rotate(Entity & entity, const Matrix& rotMatrix)
+void TransformHandler::Rotate(SGGEntity & entity, const Matrix& rotMatrix)
 {
-	transforms[entity.transformID].rotation = transforms[entity.transformID].rotation * rotMatrix;
+	entity.transform.rotation = entity.transform.rotation * rotMatrix;
 
-	transforms[entity.transformID].direction = VecMultMatrix3D(VecCreate(0.0f, 0.0f, -1.0f, 0.0f), transforms[entity.transformID].rotation);
-	transforms[entity.transformID].right = VecMultMatrix3D(VecCreate(-1.0f, 0.0f, 0.0f, 0.0f), transforms[entity.transformID].rotation);
-	transforms[entity.transformID].up = VecMultMatrix3D(VecCreate(0.0f, 1.0f, 0.0f, 0.0f), transforms[entity.transformID].rotation);
+	entity.transform.direction = VecMultMatrix3D(VecCreate(0.0f, 0.0f, -1.0f, 0.0f), entity.transform.rotation);
+	entity.transform.right = VecMultMatrix3D(VecCreate(-1.0f, 0.0f, 0.0f, 0.0f), entity.transform.rotation);
+	entity.transform.up = VecMultMatrix3D(VecCreate(0.0f, 1.0f, 0.0f, 0.0f), entity.transform.rotation);
 
-	//transforms[entity.transformID].direction = VecCreate(0.0f, 0.0f, -1.0f, 0.0f) * transforms[entity.transformID].rotation;
-	//transforms[entity.transformID].right = VecCreate(-1.0f, 0.0f, 0.0f, 0.0f) * transforms[entity.transformID].rotation)
-	//transforms[entity.transformID].direction = VecCreate(0.0f, 1.0f, 0.0f, 0.0f) * transforms[entity.transformID].rotation;
+	//transforms[SGGEntity.transformID].direction = VecCreate(0.0f, 0.0f, -1.0f, 0.0f) * transforms[SGGEntity.transformID].rotation;
+	//transforms[SGGEntity.transformID].right = VecCreate(-1.0f, 0.0f, 0.0f, 0.0f) * transforms[SGGEntity.transformID].rotation)
+	//transforms[SGGEntity.transformID].direction = VecCreate(0.0f, 1.0f, 0.0f, 0.0f) * transforms[SGGEntity.transformID].rotation;
 }
 
-void TransformHandler::RotatePitch(Entity & entity, float radians)
+void TransformHandler::RotatePitch(SGGEntity & entity, float radians)
 {
-	transforms[entity.transformID].rotation *= MatrixRotationAroundAxis(transforms[entity.transformID].right, radians);
+	entity.transform.rotation *= MatrixRotationAroundAxis(entity.transform.right, radians);
 
-	transforms[entity.transformID].direction = VecMultMatrix3D(VecCreate(0.0f, 0.0f, -1.0f, 0.0f), transforms[entity.transformID].rotation);
-	transforms[entity.transformID].up = VecMultMatrix3D(VecCreate(0.0f, 1.0f, 0.0f, 0.0f), transforms[entity.transformID].rotation);
+	entity.transform.direction = VecMultMatrix3D(VecCreate(0.0f, 0.0f, -1.0f, 0.0f), entity.transform.rotation);
+	entity.transform.up = VecMultMatrix3D(VecCreate(0.0f, 1.0f, 0.0f, 0.0f), entity.transform.rotation);
 }
 
-void TransformHandler::RotateYaw(Entity & entity, float radians)
+void TransformHandler::RotateYaw(SGGEntity & entity, float radians)
 {
-	transforms[entity.transformID].rotation *= MatrixRotationAroundAxis(transforms[entity.transformID].up, radians);
+	entity.transform.rotation *= MatrixRotationAroundAxis(entity.transform.up, radians);
 
-	transforms[entity.transformID].direction = VecMultMatrix3D(VecCreate(0.0f, 0.0f, -1.0f, 0.0f), transforms[entity.transformID].rotation);
-	transforms[entity.transformID].right = VecMultMatrix3D(VecCreate(-1.0f, 0.0f, 0.0f, 0.0f), transforms[entity.transformID].rotation);
+	entity.transform.direction = VecMultMatrix3D(VecCreate(0.0f, 0.0f, -1.0f, 0.0f), entity.transform.rotation);
+	entity.transform.right = VecMultMatrix3D(VecCreate(-1.0f, 0.0f, 0.0f, 0.0f), entity.transform.rotation);
 }
 
-void TransformHandler::RotateRoll(Entity & entity, float radians)
+void TransformHandler::RotateRoll(SGGEntity & entity, float radians)
 {
-	transforms[entity.transformID].rotation *= MatrixRotationAroundAxis(transforms[entity.transformID].direction, radians);
+	entity.transform.rotation *= MatrixRotationAroundAxis(entity.transform.direction, radians);
 
-	transforms[entity.transformID].right = VecMultMatrix3D(VecCreate(-1.0f, 0.0f, 0.0f, 0.0f), transforms[entity.transformID].rotation);
-	transforms[entity.transformID].up = VecMultMatrix3D(VecCreate(0.0f, 1.0f, 0.0f, 0.0f), transforms[entity.transformID].rotation);
+	entity.transform.right = VecMultMatrix3D(VecCreate(-1.0f, 0.0f, 0.0f, 0.0f), entity.transform.rotation);
+	entity.transform.up = VecMultMatrix3D(VecCreate(0.0f, 1.0f, 0.0f, 0.0f), entity.transform.rotation);
 }
 
-void TransformHandler::SetRotation(Entity & entity, const Matrix& rotMatrix)
+void TransformHandler::SetRotation(SGGEntity & entity, const Matrix& rotMatrix)
 {
-	transforms[entity.transformID].rotation = rotMatrix;
+	entity.transform.rotation = rotMatrix;
 
-	transforms[entity.transformID].direction = VecMultMatrix3D(VecCreate(0.0f, 0.0f, -1.0f, 0.0f), transforms[entity.transformID].rotation);
-	transforms[entity.transformID].right = VecMultMatrix3D(VecCreate(-1.0f, 0.0f, 0.0f, 0.0f), transforms[entity.transformID].rotation);
-	transforms[entity.transformID].up = VecMultMatrix3D(VecCreate(0.0f, 1.0f, 0.0f, 0.0f), transforms[entity.transformID].rotation);
+	entity.transform.direction = VecMultMatrix3D(VecCreate(0.0f, 0.0f, -1.0f, 0.0f), entity.transform.rotation);
+	entity.transform.right = VecMultMatrix3D(VecCreate(-1.0f, 0.0f, 0.0f, 0.0f), entity.transform.rotation);
+	entity.transform.up = VecMultMatrix3D(VecCreate(0.0f, 1.0f, 0.0f, 0.0f), entity.transform.rotation);
 }
 
-Matrix TransformHandler::GetRotation(Entity & entity, const Matrix& rotMatrix)
+Matrix TransformHandler::GetRotation(SGGEntity & entity, const Matrix& rotMatrix)
 {
-	return transforms[entity.transformID].rotation;
+	return entity.transform.rotation;
 }
 
-void TransformHandler::Scale(Entity & entity, Vec scale)
+void TransformHandler::Scale(SGGEntity & entity, Vec scale)
 {
-	transforms[entity.transformID].scale = transforms[entity.transformID].scale * scale;
+	entity.transform.scale = entity.transform.scale * scale;
 }
 
-void TransformHandler::ScaleUniform(Entity & entity, float value)
+void TransformHandler::ScaleUniform(SGGEntity & entity, float value)
 {
-	transforms[entity.transformID].scale = VecScale(transforms[entity.transformID].scale, value);
+	entity.transform.scale = VecScale(entity.transform.scale, value);
 }
 
-void TransformHandler::SetScale(Entity & entity, Vec scale)
+void TransformHandler::SetScale(SGGEntity & entity, Vec scale)
 {
-	transforms[entity.transformID].scale = scale;
+	entity.transform.scale = scale;
 }
 
-Vec TransformHandler::GetScale(Entity & entity)
+Vec TransformHandler::GetScale(SGGEntity & entity)
 {
-	return transforms[entity.transformID].scale;
+	return entity.transform.scale;
 }
 
