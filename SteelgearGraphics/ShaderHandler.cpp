@@ -64,6 +64,7 @@ void ShaderHandler::BindShaders(SGGEntity & entity, std::string shaderName, bool
 
 	shaderJobs.push_back(shaders[entity.shaderID]);
 
+	entity.needsSorting = true;
 }
 
 void ShaderHandler::RemoveShaders(SGGEntity & entity)
@@ -87,6 +88,7 @@ void ShaderHandler::RemoveShaders(SGGEntity & entity)
 	}
 
 	entity.shaderID = -1;
+	entity.needsSorting = true;
 }
 
 std::vector<ShaderData>& ShaderHandler::GetShaderJobs()

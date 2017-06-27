@@ -4,9 +4,11 @@
 
 SGGEntity::SGGEntity()
 {
+
 }
 
 
 SGGEntity::~SGGEntity()
 {
+
 }

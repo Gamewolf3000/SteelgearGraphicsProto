@@ -11,7 +11,7 @@ private:
 	SGGEntityHandler* entHandler;
 
 public:
-	SGGScene(MeshHandler* mesh, ShaderHandler* pipeline, LightHandler* light, CameraHandler* camera, MaterialHandler* material, TransformHandler* transform);
+	SGGScene(EntitySortingSettings& sortingSettings, MeshHandler* mesh, ShaderHandler* pipeline, LightHandler* light, CameraHandler* camera, MaterialHandler* material, TransformHandler* transform);
 	~SGGScene();
 
 	SGGEntityHandler* Entity();

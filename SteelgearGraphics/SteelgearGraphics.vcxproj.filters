@@ -192,6 +192,9 @@
     <ClInclude Include="Camera.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="EntitySorter.h">
+      <Filter>Entity System\Other\Headers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SGGEngine.cpp">
@@ -268,6 +271,9 @@
     </ClCompile>
     <ClCompile Include="Main.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="EntitySorter.cpp">
+      <Filter>Entity System\Other\Sources</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

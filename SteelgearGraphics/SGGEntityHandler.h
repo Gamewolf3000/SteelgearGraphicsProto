@@ -3,6 +3,7 @@
 #include <vector>
 
 #include "SGGEntity.h"
+#include "EntitySorter.h"
 
 class SGGEntityHandler
 {
@@ -11,6 +12,8 @@ class SGGEntityHandler
 private:
 	std::vector<SGGEntity*> entities;
 	std::vector<int> freeSpots;
+
+	EntitySorter* entSorter;
 
 	MeshHandler* meshHandler;
 	ShaderHandler* pipelineHandler;
@@ -34,13 +37,11 @@ private:
 	//void ClearEnvironmentMapJobs();
 	//std::vector<EnvironmentMapJob> environmentMapJobs;
 
-	const std::vector<SGGEntity*>& GetEntities();
-
-	void InsertEntity(SGGEntity* entity);
+	const SortedEntitiesData& GetEntities();
 
 public:
 
-	SGGEntityHandler(MeshHandler* mesh, ShaderHandler* pipeline, LightHandler* light, CameraHandler* camera, MaterialHandler* material,	TransformHandler* transform);
+	SGGEntityHandler(EntitySortingSettings& sortingSettings, MeshHandler* mesh, ShaderHandler* pipeline, LightHandler* light, CameraHandler* camera, MaterialHandler* material,	TransformHandler* transform);
 	virtual ~SGGEntityHandler();
 
 	SGGEntity* CreateEntity();

@@ -3,24 +3,24 @@
 #include "SGGEntity.h"
 #include "TransformHandler.h"
 
-CameraData CameraHandler::UpdateActiveCamera()
+CameraData CameraHandler::UpdateCameraData(SGGEntity& entity)
 {
-	TransformData data = transformHandler->transforms[cameras[activeCamera].transformID];
-	Vec posOffset = VecCreate(cameras[activeCamera].offset.x, cameras[activeCamera].offset.y, cameras[activeCamera].offset.z, 0.0f);
-	Vec LookAt = data.position + posOffset + data.direction;
+	int cameraID = entity.cameraID;
+	TransformData* tData = &entity.transform;
+	Vec posOffset = VecCreate(cameras[cameraID].offset.x, cameras[cameraID].offset.y, cameras[cameraID].offset.z, 0.0f);
+	Vec LookAt = tData->position + posOffset + tData->direction;
 
-	Matrix tempMV = MatrixViewLH(data.position + posOffset, LookAt, data.up);
-	MatrixToFloat4x4(cameras[activeCamera].viewM, tempMV);
+	Matrix tempMV = MatrixViewLH(tData->position + posOffset, LookAt, tData->up);
+	MatrixToFloat4x4(cameras[cameraID].viewM, tempMV);
 
-	cameras[activeCamera].position = Float3D(VecGetByIndex(0, data.position), VecGetByIndex(1, data.position), VecGetByIndex(2, data.position));
-	cameras[activeCamera].lookAt = Float3D(VecGetByIndex(0, LookAt), VecGetByIndex(1, LookAt), VecGetByIndex(2, LookAt));
+	cameras[cameraID].position = Float3D(VecGetByIndex(0, tData->position), VecGetByIndex(1, tData->position), VecGetByIndex(2, tData->position));
+	cameras[cameraID].lookAt = Float3D(VecGetByIndex(0, LookAt), VecGetByIndex(1, LookAt), VecGetByIndex(2, LookAt));
 
-	return cameras[activeCamera];
+	return cameras[cameraID];
 }
 
-CameraHandler::CameraHandler(TransformHandler * handler)
+CameraHandler::CameraHandler()
 {
-	transformHandler = handler;
 }
 
 CameraHandler::~CameraHandler()
@@ -28,7 +28,7 @@ CameraHandler::~CameraHandler()
 
 }
 
-void CameraHandler::BindCamera(SGGEntity & entity, float fov, float aspectRatio, float nearPlane, float farPlane, bool setActive)
+void CameraHandler::BindCamera(SGGEntity & entity, float fov, float aspectRatio, float nearPlane, float farPlane)
 {
 	int vectorSpot = -1;
 
@@ -49,29 +49,12 @@ void CameraHandler::BindCamera(SGGEntity & entity, float fov, float aspectRatio,
 		vectorSpot = cameras.size() - 1;
 	}
 
-	if (setActive)
-	{
-		activeCamera = vectorSpot;
-	}
-
 	entity.cameraID = vectorSpot;
-	cameras[vectorSpot].transformID = entity.transformID;
 	MatrixToFloat4x4(cameras[vectorSpot].projectionM, MatrixProjectionLH(fov, aspectRatio, nearPlane, farPlane));
 }
 
 void CameraHandler::RemoveCamera(SGGEntity & SGGEntity)
 {
-	if (SGGEntity.cameraID == activeCamera)
-	{
-		//ErrorCheck(5000, L"Active camera removed");
-		activeCamera = -1; // This forces an immediate crash, instead of creating a null camera
-	}
-
 	freeSpots.push_back(SGGEntity.cameraID);
 	SGGEntity.cameraID = -1;
-}
-
-void CameraHandler::SetActiveCamera(SGGEntity & SGGEntity)
-{
-	activeCamera = SGGEntity.cameraID;
 }

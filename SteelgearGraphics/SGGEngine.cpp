@@ -21,11 +21,13 @@ void SGGEngine::Setup(HINSTANCE hInstance, SGGSettings settings)
 {
 	GetCurrentDirectory(200, directory);
 
+	engineSettings = settings;
+
 	transformHandler = new TransformHandler;
 	meshHandler = new MeshHandler(directory);
 	pipelineHandler = new ShaderHandler(directory);
 	lightHandler = new LightHandler;
-	cameraHandler = new CameraHandler(transformHandler);
+	cameraHandler = new CameraHandler;
 	materialHandler = new MaterialHandler;
 
 	//if(settings.graphics.gAPI == GraphicsAPI::D3D11)
@@ -41,12 +43,12 @@ SGGEngine::~SGGEngine()
 
 SGGScene * SGGEngine::CreateScene()
 {
-	return new SGGScene(meshHandler, pipelineHandler, lightHandler, cameraHandler, materialHandler, transformHandler);
+	return new SGGScene(engineSettings.sorting, meshHandler, pipelineHandler, lightHandler, cameraHandler, materialHandler, transformHandler);
 }
 
 void SGGEngine::RenderScene(SGGScene * scene)
 {
-
+	SortedEntitiesData temp = scene->Entity()->GetEntities();
 }
 
 wchar_t * SGGEngine::GetDirectory()

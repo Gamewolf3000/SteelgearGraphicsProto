@@ -96,22 +96,27 @@ void MaterialHandler::BindMaterial(SGGEntity & entity, std::string fileName, Mat
 				if (type == diffuse)
 				{
 					entity.materialsIDs.diffuseTex = i;
+					entity.materialsIDs.UpdateComparator();
 				}
 				else if (type == roughness)
 				{
 					entity.materialsIDs.roughnessTex = i;
+					entity.materialsIDs.UpdateComparator();
 				}
 				else if (type == metallic)
 				{
 					entity.materialsIDs.metallicTex = i;
+					entity.materialsIDs.UpdateComparator();
 				}
 				else if (type == normal)
 				{
 					entity.materialsIDs.normalMap = i;
+					entity.materialsIDs.UpdateComparator();
 				}
 				else if (type == displacement)
 				{
 					entity.materialsIDs.displacementMap = i;
+					entity.materialsIDs.UpdateComparator();
 				}
 
 				materials[i].nrOfUsers++;
@@ -122,22 +127,27 @@ void MaterialHandler::BindMaterial(SGGEntity & entity, std::string fileName, Mat
 		if (type == diffuse)
 		{
 			entity.materialsIDs.diffuseTex = materials.size();
+			entity.materialsIDs.UpdateComparator();
 		}
 		else if (type == roughness)
 		{
 			entity.materialsIDs.roughnessTex = materials.size();
+			entity.materialsIDs.UpdateComparator();
 		}
 		else if (type == metallic)
 		{
 			entity.materialsIDs.metallicTex = materials.size();
+			entity.materialsIDs.UpdateComparator();
 		}
 		else if (type == normal)
 		{
 			entity.materialsIDs.normalMap = materials.size();
+			entity.materialsIDs.UpdateComparator();
 		}
 		else if (type == displacement)
 		{
 			entity.materialsIDs.displacementMap = materials.size();
+			entity.materialsIDs.UpdateComparator();
 		}
 
 		for (int i = 0; i < nrOfFrames; i++)
@@ -167,22 +177,27 @@ void MaterialHandler::BindMaterial(SGGEntity & entity, std::string fileName, Mat
 				if (type == diffuse)
 				{
 					entity.materialsIDs.diffuseTex = i;
+					entity.materialsIDs.UpdateComparator();
 				}
 				else if (type == roughness)
 				{
 					entity.materialsIDs.roughnessTex = i;
+					entity.materialsIDs.UpdateComparator();
 				}
 				else if (type == metallic)
 				{
 					entity.materialsIDs.metallicTex = i;
+					entity.materialsIDs.UpdateComparator();
 				}
 				else if (type == normal)
 				{
 					entity.materialsIDs.normalMap = i;
+					entity.materialsIDs.UpdateComparator();
 				}
 				else if (type == displacement)
 				{
 					entity.materialsIDs.displacementMap = i;
+					entity.materialsIDs.UpdateComparator();
 				}
 
 				materials[i].nrOfUsers++;
@@ -203,26 +218,31 @@ void MaterialHandler::BindMaterial(SGGEntity & entity, std::string fileName, Mat
 			if (type == diffuse)
 			{
 				entity.materialsIDs.diffuseTex = vectorPos;
+				entity.materialsIDs.UpdateComparator();
 				temp.type = diffuse;
 			}
 			else if (type == roughness)
 			{
 				entity.materialsIDs.roughnessTex = vectorPos;
+				entity.materialsIDs.UpdateComparator();
 				temp.type = roughness;
 			}
 			else if (type == metallic)
 			{
 				entity.materialsIDs.metallicTex = vectorPos;
+				entity.materialsIDs.UpdateComparator();
 				temp.type = metallic;
 			}
 			else if (type == normal)
 			{
 				entity.materialsIDs.normalMap = vectorPos;
+				entity.materialsIDs.UpdateComparator();
 				temp.type = normal;
 			}
 			else if (type == displacement)
 			{
 				entity.materialsIDs.displacementMap = vectorPos;
+				entity.materialsIDs.UpdateComparator();
 				temp.type = displacement;
 			}
 
@@ -239,26 +259,31 @@ void MaterialHandler::BindMaterial(SGGEntity & entity, std::string fileName, Mat
 			if (type == diffuse)
 			{
 				entity.materialsIDs.diffuseTex = vectorPos;
+				entity.materialsIDs.UpdateComparator();
 				temp.type = diffuse;
 			}
 			else if (type == roughness)
 			{
 				entity.materialsIDs.roughnessTex = vectorPos;
+				entity.materialsIDs.UpdateComparator();
 				temp.type = roughness;
 			}
 			else if (type == metallic)
 			{
 				entity.materialsIDs.metallicTex = vectorPos;
+				entity.materialsIDs.UpdateComparator();
 				temp.type = metallic;
 			}
 			else if (type == normal)
 			{
 				entity.materialsIDs.normalMap = vectorPos;
+				entity.materialsIDs.UpdateComparator();
 				temp.type = normal;
 			}
 			else if (type == displacement)
 			{
 				entity.materialsIDs.displacementMap = vectorPos;
+				entity.materialsIDs.UpdateComparator();
 				temp.type = displacement;
 			}
 
@@ -271,6 +296,8 @@ void MaterialHandler::BindMaterial(SGGEntity & entity, std::string fileName, Mat
 
 		materialJobs.push_back(materials[vectorPos]);
 	}
+
+	entity.needsSorting = true;
 }
 
 void MaterialHandler::RemoveMaterials(SGGEntity & entity, MaterialType type)
@@ -391,6 +418,9 @@ void MaterialHandler::RemoveMaterials(SGGEntity & entity, MaterialType type)
 
 		entity.materialsIDs.displacementMap = 4;
 	}
+
+	entity.materialsIDs.UpdateComparator();
+	entity.needsSorting = true;
 }
 
 void MaterialHandler::Animate(SGGEntity & entity, MaterialType type)
@@ -450,6 +480,9 @@ void MaterialHandler::Animate(SGGEntity & entity, MaterialType type)
 			entity.materialsIDs.displacementMap++;
 		}
 	}
+
+	entity.materialsIDs.UpdateComparator();
+	entity.needsSorting = true;
 }
 
 void MaterialHandler::AnimateReverse(SGGEntity & entity, MaterialType type)
@@ -509,6 +542,9 @@ void MaterialHandler::AnimateReverse(SGGEntity & entity, MaterialType type)
 			entity.materialsIDs.displacementMap--;
 		}
 	}
+
+	entity.materialsIDs.UpdateComparator();
+	entity.needsSorting = true;
 }
 
 int MaterialHandler::GetAnimationFrame(SGGEntity & entity, MaterialType type)

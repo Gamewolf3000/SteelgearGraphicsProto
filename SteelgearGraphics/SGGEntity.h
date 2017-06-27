@@ -19,16 +19,21 @@ struct SGGEntityMaterials
 	unsigned int normalMap = 3;
 	unsigned int displacementMap = 4;
 
+	unsigned long long int comparator = -1; // Max value
+
 	bool operator==(SGGEntityMaterials const& other)
 	{
-		if (this->diffuseTex == other.diffuseTex && this->roughnessTex == other.roughnessTex && this->metallicTex == other.metallicTex && this->normalMap == other.normalMap && this->displacementMap == other.displacementMap)
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
+		return this->comparator == other.comparator;
+	}
+
+	bool operator>(SGGEntityMaterials const& other)
+	{
+		return this->comparator > other.comparator;
+	}
+
+	bool operator<(SGGEntityMaterials const& other)
+	{
+		return this->comparator < other.comparator;
 	}
 
 	void SetMaterials(int dTex, int rTex, int mTex, int nMap, int dMap)
@@ -39,6 +44,11 @@ struct SGGEntityMaterials
 		this->normalMap = nMap;
 		this->displacementMap = dMap;
 	}
+
+	void UpdateComparator()
+	{
+		comparator = diffuseTex * pow(10, 0) + roughnessTex * pow(10, 3) + metallicTex * pow(10, 6) + normalMap * pow(10, 9) + displacementMap * pow(10, 12); // Assuming that there are no more than 999 of each type of material
+	}
 };
 
 class SGGEntity
@@ -47,6 +57,7 @@ private:
 
 	friend class SGGEntityHandler;
 	friend class SGGEngine;
+	friend class EntitySorter;
 	friend class TransformHandler;
 	friend class MeshHandler;
 	friend class ShaderHandler;
@@ -64,10 +75,10 @@ private:
 	int meshID = -1;
 	SGGEntityMaterials materialsIDs;
 	int shaderID = -1;
-	int transformID = -1;
 	int cameraID = -1;
 	int lightID = -1;
 
+	bool needsSorting = true;
 
 
 public:
@@ -76,14 +87,7 @@ public:
 
 	bool operator==(SGGEntity const& other)
 	{
-		if (this->identifier == other.identifier && this->idNumber == other.idNumber && this->parent == other.parent && this->children == other.children && this->meshID == other.meshID && this->materialsIDs == other.materialsIDs && this->shaderID == other.shaderID && this->transformID == other.transformID && this->cameraID == other.cameraID && this->lightID == other.lightID)
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
+		return (this->idNumber == other.idNumber);
 	}
 };
 

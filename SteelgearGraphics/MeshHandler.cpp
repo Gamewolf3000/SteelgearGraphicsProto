@@ -66,6 +66,8 @@ void MeshHandler::BindMesh(SGGEntity& entity, std::string name)
 	entityMeshes[entity.meshID].identifier = name;
 	entityMeshes[entity.meshID].nrOfUsers = 1;
 	meshJobs.push_back(entityMeshes[entity.meshID]);
+
+	entity.needsSorting = true;
 }
 
 void MeshHandler::BindMesh(SGGEntity & entity, MeshData mesh)
@@ -87,6 +89,8 @@ void MeshHandler::BindMesh(SGGEntity & entity, MeshData mesh)
 
 	entityMeshes[entity.meshID].nrOfUsers = 1;
 	meshJobs.push_back(entityMeshes[entity.meshID]);
+
+	entity.needsSorting = true;
 }
 
 void MeshHandler::RemoveMesh(SGGEntity & entity)
@@ -111,6 +115,7 @@ void MeshHandler::RemoveMesh(SGGEntity & entity)
 	}
 
 	entity.meshID = -1;
+	entity.needsSorting = true;
 }
 
 std::vector<MeshData>& MeshHandler::GetMeshJobs()

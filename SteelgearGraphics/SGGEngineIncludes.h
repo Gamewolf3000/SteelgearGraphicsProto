@@ -7,18 +7,42 @@ enum GraphicsAPI
 	D3D11
 };
 
+enum SortType
+{
+	PIPELINE,
+	MESH,
+	MATERIALS,
+	NONE
+
+};
+
+struct GraphicsSettings
+{
+
+	GraphicsAPI gAPI = GraphicsAPI::D3D11;
+	unsigned int windowWidth = 1280;
+	unsigned int windowHeight = 720;
+
+};
+
+struct EntitySortingSettings
+{
+	SortType order[3] = { PIPELINE, MESH, MATERIALS };
+	unsigned int incrementAmount = 10;
+};
+
 struct SGGSettings
 {
-	struct GraphicsSettings
-	{
-
-		GraphicsAPI gAPI = GraphicsAPI::D3D11;
-		unsigned int windowWidth = 1280;
-		unsigned int windowHeight = 720;
-
-	};
-
 	GraphicsSettings graphics;
+	EntitySortingSettings sorting;
+};
+
+class SGGEntity;
+
+struct SortedEntitiesData
+{
+	SGGEntity* arr;
+	unsigned int nrOfEntities;
 };
 
 // 1 = Succeded no problems, 0 = Something might be wrong but not critical, -1 = Critical error the program should terminate

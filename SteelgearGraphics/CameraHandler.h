@@ -16,8 +16,6 @@ struct CameraData
 	Float3D offset;
 	Float3D position;
 	Float3D lookAt;
-
-	int transformID;
 };
 
 class CameraHandler
@@ -28,19 +26,14 @@ private:
 	std::vector<CameraData> cameras;
 	std::vector<int> freeSpots;
 
-	TransformHandler* transformHandler;
-
-	int activeCamera = -1;
-
-	CameraData UpdateActiveCamera();
+	CameraData UpdateCameraData(SGGEntity& entity);
 
 public:
-	CameraHandler(TransformHandler* handler);
+	CameraHandler();
 	virtual ~CameraHandler();
 
-	void BindCamera(SGGEntity& entity, float fov, float aspectRatio, float nearPlane, float farPlane, bool setActive);
+	void BindCamera(SGGEntity& entity, float fov, float aspectRatio, float nearPlane, float farPlane);
 	void RemoveCamera(SGGEntity& entity);
-	void SetActiveCamera(SGGEntity& entity);
 
 };
 

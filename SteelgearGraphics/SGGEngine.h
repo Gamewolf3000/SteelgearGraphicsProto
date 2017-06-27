@@ -23,7 +23,7 @@
 #include "SGG3DAPI.h"
 #include "SGGEngineIncludes.h"
 
-
+#include <iostream>
 
 class SGGEngine
 {
@@ -34,6 +34,8 @@ private:
 	{
 		//private constructor
 	}
+
+	SGGSettings engineSettings;
 
 	SGG3DAPI* graphicsApi;
 	//D3D11BaseClass* d3d;
