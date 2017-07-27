@@ -2,9 +2,41 @@
 
 #include "SGGMath.h"
 
+#ifdef _WIN32
+
+#include <Windows.h>
+
+#endif // _WIN32
+
+#define TRANSFORMSLOT 0
+
+#define NROFCONSTBUFFERSLOTS 16
+#define NROFPIXELSHADERTEXTURESLOTS 16
+
+
 enum GraphicsAPI
 {
 	D3D11
+};
+
+struct APISpecifics
+{
+
+};
+
+struct D3D11Specifics : public APISpecifics
+{
+	HINSTANCE hInstance;
+};
+
+struct GraphicsSettings
+{
+
+	GraphicsAPI gAPI = GraphicsAPI::D3D11;
+	APISpecifics* apiSpecificsData = nullptr;
+	unsigned int windowWidth = 1280;
+	unsigned int windowHeight = 720;
+
 };
 
 enum SortType
@@ -13,15 +45,6 @@ enum SortType
 	MESH,
 	MATERIALS,
 	NONE
-
-};
-
-struct GraphicsSettings
-{
-
-	GraphicsAPI gAPI = GraphicsAPI::D3D11;
-	unsigned int windowWidth = 1280;
-	unsigned int windowHeight = 720;
 
 };
 

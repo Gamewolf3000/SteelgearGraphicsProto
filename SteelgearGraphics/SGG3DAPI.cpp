@@ -2,8 +2,9 @@
 
 
 
-SGG3DAPI::SGG3DAPI()
+SGG3DAPI::SGG3DAPI(GraphicsSettings gSettings)
 {
+	settings = gSettings;
 }
 
 

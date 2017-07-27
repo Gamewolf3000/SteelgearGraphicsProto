@@ -217,11 +217,16 @@
     <ClInclude Include="pch.h" />
     <ClInclude Include="PlatformHelpers.h" />
     <ClInclude Include="SGG3DAPI.h" />
+    <ClInclude Include="SGGD3D11Base.h" />
+    <ClInclude Include="SGGD3D11ConstantBuffers.h" />
+    <ClInclude Include="SGGD3D11Includes.h" />
+    <ClInclude Include="SGGD3D11ShaderResourceViews.h" />
     <ClInclude Include="SGGEngine.h" />
     <ClInclude Include="SGGEngineIncludes.h" />
     <ClInclude Include="SGGEntity.h" />
     <ClInclude Include="SGGEntityHandler.h" />
     <ClInclude Include="SGGEntityJobs.h" />
+    <ClInclude Include="SGGEntityPipeline.h" />
     <ClInclude Include="SGGMath.h" />
     <ClInclude Include="SGGScene.h" />
     <ClInclude Include="ShaderHandler.h" />
@@ -293,9 +298,13 @@
     </ClCompile>
     <ClCompile Include="OBJLoader.cpp" />
     <ClCompile Include="SGG3DAPI.cpp" />
+    <ClCompile Include="SGGD3D11Base.cpp" />
+    <ClCompile Include="SGGD3D11ConstantBuffers.cpp" />
+    <ClCompile Include="SGGD3D11ShaderResourceViews.cpp" />
     <ClCompile Include="SGGEngine.cpp" />
     <ClCompile Include="SGGEntity.cpp" />
     <ClCompile Include="SGGEntityHandler.cpp" />
+    <ClCompile Include="SGGEntityPipeline.cpp" />
     <ClCompile Include="SGGScene.cpp" />
     <ClCompile Include="ShaderHandler.cpp" />
     <ClCompile Include="TimerClass.cpp" />

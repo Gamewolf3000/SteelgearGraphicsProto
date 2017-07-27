@@ -16,15 +16,6 @@
     <Filter Include="Graphics">
       <UniqueIdentifier>{951ea813-96fa-44fc-9218-7afda70bf6f4}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Graphics\D3D11">
-      <UniqueIdentifier>{5a00344a-8be4-4137-8286-1706c39faa66}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Graphics\D3D11\Headers">
-      <UniqueIdentifier>{c266d138-8dc3-48ed-b8b3-3dded22e6dfe}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Graphics\D3D11\Sources">
-      <UniqueIdentifier>{f9119843-8e7a-4cb7-accf-4c4fbd9ef5b7}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Utility">
       <UniqueIdentifier>{4d654d7b-50ef-4176-9cc8-2e9af35ac45d}</UniqueIdentifier>
     </Filter>
@@ -97,6 +88,24 @@
     <Filter Include="DirectXTK">
       <UniqueIdentifier>{af6a9671-9f1f-4fcf-8e30-53b1caaf79c9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Graphics\OLDD3D11">
+      <UniqueIdentifier>{5a00344a-8be4-4137-8286-1706c39faa66}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics\OLDD3D11\Headers">
+      <UniqueIdentifier>{c266d138-8dc3-48ed-b8b3-3dded22e6dfe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics\OLDD3D11\Sources">
+      <UniqueIdentifier>{f9119843-8e7a-4cb7-accf-4c4fbd9ef5b7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics\D3D11">
+      <UniqueIdentifier>{b9da73d5-8398-4503-bf3a-eb7b516c5bc9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics\D3D11\Headers">
+      <UniqueIdentifier>{357d310b-b221-41ec-a518-a84479e7e496}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics\D3D11\Sources">
+      <UniqueIdentifier>{b46216c3-5061-42c8-ac3b-93b1a4dd7219}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SGGEngine.h">
@@ -109,25 +118,25 @@
       <Filter>Graphics</Filter>
     </ClInclude>
     <ClInclude Include="D3D11BaseClass.h">
-      <Filter>Graphics\D3D11\Headers</Filter>
+      <Filter>Graphics\OLDD3D11\Headers</Filter>
     </ClInclude>
     <ClInclude Include="D3D11BufferClass.h">
-      <Filter>Graphics\D3D11\Headers</Filter>
+      <Filter>Graphics\OLDD3D11\Headers</Filter>
     </ClInclude>
     <ClInclude Include="D3D11CameraClass.h">
-      <Filter>Graphics\D3D11\Headers</Filter>
+      <Filter>Graphics\OLDD3D11\Headers</Filter>
     </ClInclude>
     <ClInclude Include="D3D11Includes.h">
-      <Filter>Graphics\D3D11\Headers</Filter>
+      <Filter>Graphics\OLDD3D11\Headers</Filter>
     </ClInclude>
     <ClInclude Include="D3D11MaterialClass.h">
-      <Filter>Graphics\D3D11\Headers</Filter>
+      <Filter>Graphics\OLDD3D11\Headers</Filter>
     </ClInclude>
     <ClInclude Include="D3D11ShaderClass.h">
-      <Filter>Graphics\D3D11\Headers</Filter>
+      <Filter>Graphics\OLDD3D11\Headers</Filter>
     </ClInclude>
     <ClInclude Include="D3DMain.h">
-      <Filter>Graphics\D3D11\Headers</Filter>
+      <Filter>Graphics\OLDD3D11\Headers</Filter>
     </ClInclude>
     <ClInclude Include="TimerClass.h">
       <Filter>Utility</Filter>
@@ -195,6 +204,21 @@
     <ClInclude Include="EntitySorter.h">
       <Filter>Entity System\Other\Headers</Filter>
     </ClInclude>
+    <ClInclude Include="SGGD3D11Base.h">
+      <Filter>Graphics\D3D11\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="SGGEntityPipeline.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SGGD3D11Includes.h">
+      <Filter>Graphics\D3D11\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="SGGD3D11ConstantBuffers.h">
+      <Filter>Graphics\D3D11\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="SGGD3D11ShaderResourceViews.h">
+      <Filter>Graphics\D3D11\Headers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SGGEngine.cpp">
@@ -207,22 +231,22 @@
       <Filter>Graphics</Filter>
     </ClCompile>
     <ClCompile Include="D3DMain.cpp">
-      <Filter>Graphics\D3D11\Sources</Filter>
+      <Filter>Graphics\OLDD3D11\Sources</Filter>
     </ClCompile>
     <ClCompile Include="D3D11BaseClass.cpp">
-      <Filter>Graphics\D3D11\Sources</Filter>
+      <Filter>Graphics\OLDD3D11\Sources</Filter>
     </ClCompile>
     <ClCompile Include="D3D11BufferClass.cpp">
-      <Filter>Graphics\D3D11\Sources</Filter>
+      <Filter>Graphics\OLDD3D11\Sources</Filter>
     </ClCompile>
     <ClCompile Include="D3D11CameraClass.cpp">
-      <Filter>Graphics\D3D11\Sources</Filter>
+      <Filter>Graphics\OLDD3D11\Sources</Filter>
     </ClCompile>
     <ClCompile Include="D3D11MaterialClass.cpp">
-      <Filter>Graphics\D3D11\Sources</Filter>
+      <Filter>Graphics\OLDD3D11\Sources</Filter>
     </ClCompile>
     <ClCompile Include="D3D11ShaderClass.cpp">
-      <Filter>Graphics\D3D11\Sources</Filter>
+      <Filter>Graphics\OLDD3D11\Sources</Filter>
     </ClCompile>
     <ClCompile Include="TimerClass.cpp">
       <Filter>Utility</Filter>
@@ -274,6 +298,18 @@
     </ClCompile>
     <ClCompile Include="EntitySorter.cpp">
       <Filter>Entity System\Other\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="SGGD3D11Base.cpp">
+      <Filter>Graphics\D3D11\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="SGGEntityPipeline.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SGGD3D11ConstantBuffers.cpp">
+      <Filter>Graphics\D3D11\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="SGGD3D11ShaderResourceViews.cpp">
+      <Filter>Graphics\D3D11\Sources</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
