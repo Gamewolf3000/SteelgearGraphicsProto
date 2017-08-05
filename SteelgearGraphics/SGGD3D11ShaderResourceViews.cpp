@@ -44,7 +44,7 @@ void SGGD3D11ShaderResourceViews::RemoveTexture(unsigned int idOfBufferToRemove)
 	freeSpots.push_back(idOfBufferToRemove);
 }
 
-void SGGD3D11ShaderResourceViews::SetShaderResourceViesPS(unsigned short int slotToSet, unsigned int srvToSet)
+void SGGD3D11ShaderResourceViews::SetShaderResourceViewPS(unsigned short int slotToSet, unsigned int srvToSet)
 {
 	deviceContext->PSSetShaderResources(slotToSet, 1, &srvs[srvToSet]);
 }

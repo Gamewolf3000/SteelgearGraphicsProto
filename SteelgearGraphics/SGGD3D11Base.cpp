@@ -83,37 +83,37 @@ HRESULT SGGD3D11Base::CreateDirect3DContext(HWND wndHandle, int width, int heigh
 		NULL,
 		&deviceContext);
 
-	if (SUCCEEDED(hr))
-	{
-		// get the address of the back buffer
-		ID3D11Texture2D* pBackBuffer = nullptr;
-		swapChain->GetBuffer(0, __uuidof(ID3D11Texture2D), (LPVOID*)&pBackBuffer);
+	//if (SUCCEEDED(hr))
+	//{
+	//	// get the address of the back buffer
+	//	ID3D11Texture2D* pBackBuffer = nullptr;
+	//	swapChain->GetBuffer(0, __uuidof(ID3D11Texture2D), (LPVOID*)&pBackBuffer);
 
-		// use the back buffer address to create the render target
-		device->CreateRenderTargetView(pBackBuffer, NULL, &backbufferRTV);
+	//	// use the back buffer address to create the render target
+	//	device->CreateRenderTargetView(pBackBuffer, NULL, &backbufferRTV);
 
 
-		pBackBuffer->Release();
+	//	pBackBuffer->Release();
 
-		D3D11_TEXTURE2D_DESC depthStencilDesc; // Create DepthStencil
-		depthStencilDesc.Width = width;
-		depthStencilDesc.Height = height;
-		depthStencilDesc.MipLevels = 1;
-		depthStencilDesc.ArraySize = 1;
-		depthStencilDesc.Format = DXGI_FORMAT_D24_UNORM_S8_UINT;
-		depthStencilDesc.SampleDesc.Count = 1;
-		depthStencilDesc.SampleDesc.Quality = 0;
-		depthStencilDesc.Usage = D3D11_USAGE_DEFAULT;
-		depthStencilDesc.BindFlags = D3D11_BIND_DEPTH_STENCIL;
-		depthStencilDesc.CPUAccessFlags = 0;
-		depthStencilDesc.MiscFlags = 0;
+	//	D3D11_TEXTURE2D_DESC depthStencilDesc; // Create DepthStencil
+	//	depthStencilDesc.Width = width;
+	//	depthStencilDesc.Height = height;
+	//	depthStencilDesc.MipLevels = 1;
+	//	depthStencilDesc.ArraySize = 1;
+	//	depthStencilDesc.Format = DXGI_FORMAT_D24_UNORM_S8_UINT;
+	//	depthStencilDesc.SampleDesc.Count = 1;
+	//	depthStencilDesc.SampleDesc.Quality = 0;
+	//	depthStencilDesc.Usage = D3D11_USAGE_DEFAULT;
+	//	depthStencilDesc.BindFlags = D3D11_BIND_DEPTH_STENCIL;
+	//	depthStencilDesc.CPUAccessFlags = 0;
+	//	depthStencilDesc.MiscFlags = 0;
 
-		device->CreateTexture2D(&depthStencilDesc, 0, &depthStencilBuffer);
-		device->CreateDepthStencilView(depthStencilBuffer, 0, &depthStencilView);
+	//	device->CreateTexture2D(&depthStencilDesc, 0, &depthStencilBuffer);
+	//	device->CreateDepthStencilView(depthStencilBuffer, 0, &depthStencilView);
 
-		// set the render target as the back buffer
-		deviceContext->OMSetRenderTargets(1, &backbufferRTV, depthStencilView);
-	}
+	//	// set the render target as the back buffer
+	//	deviceContext->OMSetRenderTargets(1, &backbufferRTV, depthStencilView);
+	//}
 	return hr;
 }
 
@@ -139,13 +139,13 @@ SGGD3D11Base::SGGD3D11Base(GraphicsSettings gSettings) : SGG3DAPI(gSettings)
 
 SGGD3D11Base::~SGGD3D11Base()
 {
-	SafeReleaseD3D(backbufferRTV);
+	//SafeReleaseD3D(backbufferRTV);
 	SafeReleaseD3D(swapChain);
 	SafeReleaseD3D(device);
 	SafeReleaseD3D(deviceContext);
 
-	SafeReleaseD3D(depthStencilBuffer);
-	SafeReleaseD3D(depthStencilView);
+	//SafeReleaseD3D(depthStencilBuffer);
+	//SafeReleaseD3D(depthStencilView);
 
 	DestroyWindow(wndHandle);
 }

@@ -29,5 +29,5 @@ public:
 	unsigned int LoadTexture(std::string file);
 	void RemoveTexture(unsigned int idOfBufferToRemove);
 
-	void SetShaderResourceViesPS(unsigned short int slotToSet, unsigned int srvToSet);
+	void SetShaderResourceViewPS(unsigned short int slotToSet, unsigned int srvToSet);
 };

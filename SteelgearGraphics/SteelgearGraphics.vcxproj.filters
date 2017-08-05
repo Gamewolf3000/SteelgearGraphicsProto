@@ -219,6 +219,12 @@
     <ClInclude Include="SGGD3D11ShaderResourceViews.h">
       <Filter>Graphics\D3D11\Headers</Filter>
     </ClInclude>
+    <ClInclude Include="SGGD3D11RenderTargetAndDepthStencil.h">
+      <Filter>Graphics\D3D11\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="SGGD3D11Shaders.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SGGEngine.cpp">
@@ -310,6 +316,12 @@
     </ClCompile>
     <ClCompile Include="SGGD3D11ShaderResourceViews.cpp">
       <Filter>Graphics\D3D11\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="SGGD3D11RenderTargetAndDepthStencil.cpp">
+      <Filter>Graphics\D3D11\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="SGGD3D11Shaders.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

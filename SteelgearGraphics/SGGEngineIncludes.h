@@ -146,6 +146,18 @@ struct TransformData
 	TransformData* parent = nullptr;
 };
 
+enum GraphicJobType
+{
+	MESH_JOB,
+	TEXTURE_JOB,
+	PIPELINE_JOB
+};
+
+struct GraphicJob
+{
+	GraphicJobType type;
+};
+
 //enum EnvironmentMap { noMap, skycubeMap_static, skycubeMap_dynamic, staticMap, dynamicMap };
 //
 //struct EnvironmentMapData
