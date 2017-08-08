@@ -9,6 +9,9 @@
 #include "SGGD3D11ConstantBuffers.h"
 #include "SGGD3D11RenderTargetAndDepthStencil.h"
 #include "SGGD3D11ShaderResourceViews.h"
+#include "SGGD3D11Shaders.h"
+#include "SGGD3D11States.h"
+#include "SGGD3D11MeshBuffers.h"
 
 class SGGD3D11Base : public SGG3DAPI
 {
@@ -17,6 +20,9 @@ private:
 	SGGD3D11ConstantBuffers* constantBuffers;
 	SGGD3D11RenderTargetAndDepthStencil* rtAndDss;
 	SGGD3D11ShaderResourceViews* srvs;
+	SGGD3D11Shaders* shaders;
+	SGGD3D11States* states;
+	SGGD3D11MeshBuffers* meshes;
 
 	void ThreadFunction();
 	bool stopThread = false;
@@ -35,13 +41,17 @@ private:
 	//ID3D11Texture2D* depthStencilBuffer = NULL;
 	//ID3D11DepthStencilView* depthStencilView = NULL;
 
+	void HandleGraphicJobs();
+	void HandlePrePipelineJobs();
+	void HandlePostPipelineJobs();
+
 public:
 	SGGD3D11Base(GraphicsSettings gSettings);
 	~SGGD3D11Base();
 
 	void Stop();
 
-	void HandleGraphicJobs(std::vector<GraphicJob*> jobs);
+	void AddGraphicJobs(std::vector<GraphicJob*> jobs);
 	void CopySceneData(SGGScene* scene);
 };
 

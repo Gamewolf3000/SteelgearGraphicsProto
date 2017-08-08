@@ -134,6 +134,13 @@ SGGD3D11Base::SGGD3D11Base(GraphicsSettings gSettings) : SGG3DAPI(gSettings)
 	CreateDirect3DContext(wndHandle, settings.windowWidth, settings.windowHeight);
 	SetViewport(settings.windowWidth, settings.windowHeight);
 
+	constantBuffers = new SGGD3D11ConstantBuffers(device, deviceContext);
+	rtAndDss = new SGGD3D11RenderTargetAndDepthStencil(device, deviceContext);
+	srvs = new SGGD3D11ShaderResourceViews(device, deviceContext);
+	shaders = new SGGD3D11Shaders(device, deviceContext);
+	states = new SGGD3D11States(device, deviceContext);
+	meshes = new SGGD3D11MeshBuffers(device, deviceContext);
+
 	ShowWindow(wndHandle, SW_SHOWDEFAULT);
 }
 

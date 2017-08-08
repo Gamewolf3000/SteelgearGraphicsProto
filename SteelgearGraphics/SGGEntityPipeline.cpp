@@ -29,11 +29,12 @@ void SGGEntityPipeline::AddNewRenderTarget(unsigned int width, unsigned int heig
 	renderTargets.push_back(temp);
 }
 
-void SGGEntityPipeline::AddNewDepthStencil(unsigned int width, unsigned int height)
+void SGGEntityPipeline::AddNewDepthStencil(unsigned int width, unsigned int height, bool usableAsShaderResource)
 {
 	DepthStencil temp;
 	temp.width = width;
 	temp.height = height;
+	temp.usableAsShaderResource = usableAsShaderResource;
 
 	depthStencils.push_back(temp);
 }

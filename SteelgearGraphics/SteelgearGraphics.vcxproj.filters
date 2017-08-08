@@ -223,6 +223,12 @@
       <Filter>Graphics\D3D11\Headers</Filter>
     </ClInclude>
     <ClInclude Include="SGGD3D11Shaders.h">
+      <Filter>Graphics\D3D11\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="SGGD3D11States.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SGGD3D11MeshBuffers.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -321,6 +327,12 @@
       <Filter>Graphics\D3D11\Sources</Filter>
     </ClCompile>
     <ClCompile Include="SGGD3D11Shaders.cpp">
+      <Filter>Graphics\D3D11\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="SGGD3D11States.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SGGD3D11MeshBuffers.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

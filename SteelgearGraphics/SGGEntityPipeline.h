@@ -84,6 +84,19 @@ struct SetRenderTargetAndDepthStencil : public PrePipelineJob
 	}
 };
 
+enum CullMode
+{
+	BACK_FACE,
+	FRONT_FACE,
+	NO_CULLING
+};
+
+enum TriangleDrawDirection
+{
+	CLOCKWISE,
+	COUNTER_CLOCKWISE
+};
+
 struct RenderTarget
 {
 	unsigned int width;
@@ -95,6 +108,42 @@ struct DepthStencil
 {
 	unsigned int width;
 	unsigned int height;
+	bool usableAsShaderResource;
+};
+
+struct BlendState
+{
+
+};
+
+struct RasterizerState
+{
+	bool Wireframe;
+	CullMode cullMode;
+	TriangleDrawDirection triangleDrawDirection;
+};
+
+struct DepthStencilState
+{
+
+};
+
+enum PostPipelineJobType
+{
+	PRESENT
+};
+
+struct PostPipelineJob
+{
+	PostPipelineJobType type;
+};
+
+struct Present : public PostPipelineJob
+{
+	Present()
+	{
+		type = PRESENT;
+	}
 };
 
 struct SGGPipeline
@@ -128,8 +177,15 @@ class SGGEntityPipeline
 private:
 
 	std::vector<SGGPipeline*> subPipelines;
+
 	std::vector<RenderTarget> renderTargets;
 	std::vector<DepthStencil> depthStencils;
+	std::vector<BlendState> blendStates;
+	std::vector<RasterizerState> rasterizerStates;
+	std::vector<DepthStencilState> depthStencilStates;
+
+	std::vector<PrePipelineJob*> prePipelineJobs;
+	std::vector<PostPipelineJob*> postPipelineJobs;
 
 	std::string identifier = "";
 
@@ -139,6 +195,6 @@ public:
 
 	void AddNewPipeline(SGGPipeline* pipeline);
 	void AddNewRenderTarget(unsigned int width, unsigned int height, bool usableAsShaderResource);
-	void AddNewDepthStencil(unsigned int width, unsigned int height);
+	void AddNewDepthStencil(unsigned int width, unsigned int height, bool usableAsShaderResource);
 };
 

@@ -1,6 +1,6 @@
 #include "SGGD3D11Shaders.h"
 
-void SGGD3D11Shaders::CreateInputLayout(ID3D11Device* device, GraphicsShaderData & dataStruct, ID3DBlob* pVS)
+void SGGD3D11Shaders::CreateInputLayout(GraphicsShaderData & dataStruct, ID3DBlob* pVS)
 {
 	HRESULT hr;
 
@@ -31,7 +31,7 @@ void SGGD3D11Shaders::LoadVertexShader(const std::string &name, GraphicsShaderDa
 
 	hr = device->CreateVertexShader(pVS->GetBufferPointer(), pVS->GetBufferSize(), nullptr, &dataStruct.vertexShader);
 
-	CreateInputLayout(device, dataStruct, pVS);
+	CreateInputLayout(dataStruct, pVS);
 	pVS->Release();
 }
 
@@ -63,6 +63,15 @@ SGGD3D11Shaders::SGGD3D11Shaders(ID3D11Device* device, ID3D11DeviceContext* devi
 
 SGGD3D11Shaders::~SGGD3D11Shaders()
 {
+	for (int i = 0; i < gShaders.size(); i++)
+	{
+		SafeReleaseD3D(gShaders[i].inputLayout);
+		SafeReleaseD3D(gShaders[i].vertexShader);
+		SafeReleaseD3D(gShaders[i].hullShader);
+		SafeReleaseD3D(gShaders[i].domainShader);
+		SafeReleaseD3D(gShaders[i].geometryShader);
+		SafeReleaseD3D(gShaders[i].pixelShader);
+	}
 }
 
 int SGGD3D11Shaders::LoadGraphicsPipeline(const std::string & vs, const std::string & hs, const std::string & ds, const std::string & gs, const std::string & ps)

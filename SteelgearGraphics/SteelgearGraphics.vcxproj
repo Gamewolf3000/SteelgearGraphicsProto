@@ -220,9 +220,11 @@
     <ClInclude Include="SGGD3D11Base.h" />
     <ClInclude Include="SGGD3D11ConstantBuffers.h" />
     <ClInclude Include="SGGD3D11Includes.h" />
+    <ClInclude Include="SGGD3D11MeshBuffers.h" />
     <ClInclude Include="SGGD3D11RenderTargetAndDepthStencil.h" />
     <ClInclude Include="SGGD3D11ShaderResourceViews.h" />
     <ClInclude Include="SGGD3D11Shaders.h" />
+    <ClInclude Include="SGGD3D11States.h" />
     <ClInclude Include="SGGEngine.h" />
     <ClInclude Include="SGGEngineIncludes.h" />
     <ClInclude Include="SGGEntity.h" />
@@ -302,9 +304,11 @@
     <ClCompile Include="SGG3DAPI.cpp" />
     <ClCompile Include="SGGD3D11Base.cpp" />
     <ClCompile Include="SGGD3D11ConstantBuffers.cpp" />
+    <ClCompile Include="SGGD3D11MeshBuffers.cpp" />
     <ClCompile Include="SGGD3D11RenderTargetAndDepthStencil.cpp" />
     <ClCompile Include="SGGD3D11ShaderResourceViews.cpp" />
     <ClCompile Include="SGGD3D11Shaders.cpp" />
+    <ClCompile Include="SGGD3D11States.cpp" />
     <ClCompile Include="SGGEngine.cpp" />
     <ClCompile Include="SGGEntity.cpp" />
     <ClCompile Include="SGGEntityHandler.cpp" />

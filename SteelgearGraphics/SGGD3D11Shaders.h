@@ -33,7 +33,7 @@ private:
 	ID3D11Device* device = nullptr;
 	ID3D11DeviceContext* deviceContext = nullptr;
 
-	void CreateInputLayout(ID3D11Device * device, GraphicsShaderData & dataStruct, ID3DBlob * pVS);
+	void CreateInputLayout(GraphicsShaderData & dataStruct, ID3DBlob * pVS);
 
 	void LoadVertexShader(const std::string &name, GraphicsShaderData& dataStruct);
 	void loadGeometryShader(const std::string &name, GraphicsShaderData& dataStruct);
